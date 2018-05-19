@@ -1,11 +1,11 @@
-package processor;
+package com.lakhno.ignite.processor;
 
 import javax.cache.processor.EntryProcessor;
 import javax.cache.processor.EntryProcessorException;
 import javax.cache.processor.MutableEntry;
 
 /**
- * Simple entry processor.
+ * Simple entry com.lakhno.ignite.processor.
  *
  * Just for training, because of, I think, this solution won't being useful.
  *

@@ -1,10 +1,10 @@
-package service;
+package com.lakhno.ignite.service;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.services.Service;
 import org.apache.ignite.services.ServiceContext;
-import processor.CounterEntryProcessor;
+import com.lakhno.ignite.processor.CounterEntryProcessor;
 
 /**
  * Created by Lakhno Anton
@@ -37,11 +37,11 @@ public class CounterServiceImpl implements Service, CounterService {
 
 	@Override
 	public void execute(ServiceContext ctx) throws Exception {
-		System.out.println("Executing distributed service: " + ctx.name());
+		System.out.println("Executing distributed com.lakhno.ignite.service: " + ctx.name());
 	}
 	//endregion
 
-	//region Counter service method implementation.
+	//region Counter com.lakhno.ignite.service method implementation.
 	@Override
 	public int increment() {
 		return cache.invoke(CACHE_KEY, new CounterEntryProcessor());

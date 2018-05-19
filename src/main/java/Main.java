@@ -1,12 +1,12 @@
 import exception.IgniteServerException;
-import life.cycle.CustomLifeCycleBean;
+import com.lakhno.ignite.life.cycle.CustomLifeCycleBean;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteServices;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.cluster.ClusterGroup;
 import org.apache.ignite.configuration.IgniteConfiguration;
-import service.CounterService;
-import service.CounterServiceImpl;
+import com.lakhno.ignite.service.CounterService;
+import com.lakhno.ignite.service.CounterServiceImpl;
 
 /**
  * Main application class.
@@ -27,6 +27,7 @@ public class Main {
 	public static void main(String[] args) {
 		IgniteConfiguration config = new IgniteConfiguration();
 		config.setLifecycleBeans(new CustomLifeCycleBean());
+		config.setPeerClassLoadingEnabled(true);
 
 		// Setting up the client mode.
 		// This setting requires already started server node.
@@ -72,7 +73,7 @@ public class Main {
 		// Get an instance of IgniteServices for the cluster group.
 		IgniteServices svcs = ignite.services(cacheGrp);
 
-		// Deploy per-node singleton. An instance of the service
+		// Deploy per-node singleton. An instance of the com.lakhno.ignite.service
 		// will be deployed on every node within the cluster group.
 		svcs.deployNodeSingleton(SERVICE_NAME, new CounterServiceImpl(ignite));
 	}
@@ -83,7 +84,7 @@ public class Main {
 	 * @return Proxy object of the counter.
 	 */
 	private static CounterService getProxy(Ignite ignite) {
-		// Get service proxy for the deployed service.
+		// Get com.lakhno.ignite.service proxy for the deployed com.lakhno.ignite.service.
 		return ignite.services().
 				serviceProxy(SERVICE_NAME, CounterService.class, /*not-sticky*/false);
 	}

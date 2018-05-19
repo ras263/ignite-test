@@ -1,4 +1,4 @@
-package life.cycle;
+package com.lakhno.ignite.life.cycle;
 
 import org.apache.ignite.IgniteException;
 import org.apache.ignite.lifecycle.LifecycleBean;

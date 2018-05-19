@@ -1,4 +1,4 @@
-package service;
+package com.lakhno.ignite.service;
 
 import exception.IgniteServerException;
 
